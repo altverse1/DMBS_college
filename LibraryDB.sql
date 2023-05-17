@@ -66,7 +66,9 @@ create table book_lending
 -- Publishers
 insert into publisher values('Inedition','Noida', 961235521);
 insert into publisher values('Editorist','Indore', 943235521);
-insert into publisher values('OverWrite','Nagpur', 961232321);
+insert into publisher values('OverWrite','Nagpur', 961235421);
+insert into publisher values('WWWeeb','Bangalore', 961228321);
+insert into publisher values('TechStuff','Mumbai', 961232321);
 select * from publisher;
 
 -- Books
@@ -75,6 +77,8 @@ insert into book values('112','SmallBrainBigBrain','Editorist',2020);
 insert into book values('113','LearingSnekLang.','OverWrite',2023);
 insert into book values('114','1000IQMoments','Editorist',2020);
 insert into book values('115','UrbanDictionary','Inedition',2019);
+insert into book values('116','BigSmallTalk','Editorist',2018);
+insert into book values('117','AdvancedMemes','Inedition',2018);
 select * from book
 
 -- Library Branch
@@ -88,6 +92,8 @@ insert into book_authors values('112','JK_Kidding');
 insert into book_authors values('113','SirGohan');
 insert into book_authors values('114','MoistCritikal');
 insert into book_authors values('115','MoistCritikal');
+insert into book_authors values('116','JK_Kidding');
+insert into book_authors values('117','JK_Kidding');
 select * from book_authors
 
 -- Book_Copies
@@ -101,6 +107,10 @@ insert into book_copies values('112','112',456);
 insert into book_copies values('113','112',465);
 insert into book_copies values('114','112',345);
 insert into book_copies values('115','112',764);
+insert into book_copies values('116','111',35);
+insert into book_copies values('117','111',74);
+insert into book_copies values('116','112',45);
+insert into book_copies values('117','112',76);
 select * from book_copies;
 
 -- Book Lending
