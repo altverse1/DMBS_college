@@ -105,9 +105,14 @@ select * from book_copies;
 
 -- Book Lending
 insert into book_lending values('111','111','20001','2023-01-01','2023-02-01');
+insert into book_lending values('112','112','20001','2023-01-01','2023-02-01');
 insert into book_lending values('112','111','20002','2023-02-01','2023-03-01');
+insert into book_lending values('113','111','20002','2023-04-01','2023-04-16');
 insert into book_lending values('113','111','20003','2023-03-01','2023-04-01');
 insert into book_lending values('114','111','20004','2023-01-12','2023-02-12');
 insert into book_lending values('115','112','20005','2023-01-23','2023-02-23');
 insert into book_lending values('112','112','20006','2023-02-01','2023-03-01');
 select * from book_lending;
+
+
+
