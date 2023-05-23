@@ -4,6 +4,9 @@
 -- -- Create a Schema Diagram before starting
 
 -- Creating Table Publisher (1)
+
+USE	LibraryDB;
+
 create table publisher
 (
 	name varchar(10) PRIMARY KEY,
@@ -94,7 +97,7 @@ insert into book_authors values('114','MoistCritikal');
 insert into book_authors values('115','MoistCritikal');
 insert into book_authors values('116','JK_Kidding');
 insert into book_authors values('117','JK_Kidding');
-select * from book_authors
+select * from book_authors;
 
 -- Book_Copies
 insert into book_copies values('111','111',10);
@@ -134,3 +137,11 @@ select * from book_lending;
 
 
 
+
+-- All Tables
+select * from publisher
+select * from book
+select * from library_branch
+select * from book_authors
+select * from book_copies
+select * from book_lending;
