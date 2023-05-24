@@ -33,7 +33,7 @@ where not exists(select pub_name from book where pub_name=p.name);
 -- -- EXTRA
 
 -- Q. Particulars of a library branch with 0 copies of a book with id = '112'
-select l.branch_id, l.branch_name, l.address from library_branch l, book_copies b where (b.book_id='112' and b.no_of_copies=0);
+select branch_id from library_branch b where branch_id not in (select branch_id from book_copies where book_id = '112');
 
 -- Q. Retrieve the details of authors who have more than 3 books
 select a.author_name from book_authors a 

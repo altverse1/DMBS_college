@@ -115,6 +115,9 @@ insert into book_copies values('116','111',35);
 insert into book_copies values('117','111',74);
 insert into book_copies values('116','112',45);
 insert into book_copies values('117','112',76);
+insert into book_copies values('117','112',76);
+insert into book_copies values('117','113',0);
+insert into book_copies values('112','113',0);
 select * from book_copies;
 
 -- Book Lending
