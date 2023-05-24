@@ -14,7 +14,7 @@ create table director
 	 dir_name varchar(15),
 	 dir_phone bigint,
 );
---Creating Table MOVIES(mov)
+--Creating Table MOVIES
 create table movies
 (
 	mov_id varchar(5) PRIMARY KEY,
@@ -25,6 +25,7 @@ create table movies
 	foreign key(dir_id) references director(dir_id) on delete cascade
 );
 
+--Creating Table Movie Cast
 create table movie_cast
 (
 	act_id varchar(5),
@@ -35,6 +36,7 @@ create table movie_cast
 	foreign key(mov_id) references movies(mov_id) on delete cascade
 );
 
+--Creating Table Rating
 create table rating
 (
 	rat_id varchar(5) PRIMARY KEY,
@@ -43,3 +45,4 @@ create table rating
 	foreign key(mov_id) references movies(mov_id) on delete cascade
 	
 );
+
