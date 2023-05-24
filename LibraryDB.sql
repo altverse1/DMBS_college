@@ -5,7 +5,7 @@
 
 -- Creating Table Publisher (1)
 
-USE	LibraryDB;
+USE	library_ai012;
 
 create table publisher
 (
@@ -87,6 +87,7 @@ select * from book
 -- Library Branch
 insert into library_branch values('111','GrandOrder','Delhi_N01');
 insert into library_branch values('112','Fate','Delhi_N12');
+insert into library_branch values('113','Levelling','Mumbai_S01');
 select * from library_branch;
 
 -- Book Author
