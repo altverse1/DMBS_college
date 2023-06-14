@@ -55,6 +55,9 @@ INSERT INTO actor VALUES ('A004', 'Meryl', 'Female');
 INSERT INTO actor VALUES ('A005', 'Leonardo', 'Male');
 INSERT INTO actor VALUES ('A006', 'Jennifer', 'Female');
 INSERT INTO actor VALUES ('A007', 'Samuel L.', 'Male');
+INSERT INTO actor VALUES ('A008', 'Aamir Khan', 'Male');
+INSERT INTO actor VALUES ('A009', 'R Madhavan', 'Male');
+
 
 
 -- Inserting directors
@@ -66,6 +69,7 @@ INSERT INTO director VALUES ('D001', 'Nolan', 1234567890);
 INSERT INTO director VALUES ('D002', 'Spielberg', 9876543210);
 INSERT INTO director VALUES ('D003', 'Scorsese', 1112223333);
 INSERT INTO director VALUES ('D007', 'Mark', 231235312);
+INSERT INTO director VALUES ('D008', 'Aamir Khan', 987123555);
 
 
 -- Inserting movies
@@ -78,6 +82,7 @@ INSERT INTO movies VALUES ('M002', 'Jurassic Park', 1993, 'English', 'D002');
 INSERT INTO movies VALUES ('M003', 'The Departed', 2006, 'English', 'D003');
 INSERT INTO movies VALUES ('M007', 'Wall Street', 2013, 'English', 'D003');
 INSERT INTO movies VALUES ('M008', 'Garfield', 2024, 'English', 'D007');
+INSERT INTO movies VALUES ('M009', '3 Idiots', 2009, 'Hindi', 'D008');
 
 -- Inserting movie cast
 INSERT INTO movie_cast VALUES ('A004', 'M004', 'Margaret ');
@@ -89,6 +94,8 @@ INSERT INTO movie_cast VALUES ('A003', 'M001', 'Eames');
 INSERT INTO movie_cast VALUES ('A005', 'M007', 'Jordan');
 INSERT INTO movie_cast VALUES ('A007', 'M002', 'Arnold');
 INSERT INTO movie_cast VALUES ('A007', 'M008', 'Vic');
+INSERT INTO movie_cast VALUES ('A008', 'M009', 'Rancho');
+INSERT INTO movie_cast VALUES ('A009', 'M009', 'Farahn');
 
 -- Inserting movie ratings
 INSERT INTO rating VALUES ('R004', 'M004', 5);
@@ -99,6 +106,7 @@ INSERT INTO rating VALUES ('R002', 'M002', 4);
 INSERT INTO rating VALUES ('R003', 'M003', 4);
 INSERT INTO rating VALUES ('R007', 'M007', 5);
 INSERT INTO rating VALUES ('R008', 'M008', 4);
+INSERT INTO rating VALUES ('R009', 'M009', 5);
 
 
 -- Q. Select all movie directed by Nolan
@@ -120,5 +128,7 @@ select mov_title, max(rev_stars) from movies m, rating r where m.mov_id = r.mov_
 update rating set rev_stars=5 where mov_id in (select m.mov_id from movies m,director d where m.dir_id=d.dir_id and d.dir_name='Hitchcock');
 
 -- Q. Find the number of movies released in each year in each language
+select mov_year, mov_lang, count(mov_id) from movies group by mov_year, mov_lang;
 
 -- Q. Find the total number of movies directed by each director
+select d.dir_id, d.dir_name, count(m.mov_id) from movies m, director d where d.dir_id=m.dir_id  group by d.dir_id, d.dir_name;
