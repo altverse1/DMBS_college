@@ -47,7 +47,20 @@ select * from orders;
 
 -- 1.Count the customers with grades above Puttur's average
 select count(*) as count from customer where grade>(select avg(grade)from customer where city='Puttur');
+
 -- 2.Find the name and numbers of all salesman  who had more than one customer.
+select s.name, s.salesman_id from salesman s, orders o where s.salesman_id=o.salesman_id group by s.salesman_id, s.name having count(o.customer_id)>1;
+
 -- 3.List all the salesman and indicate those who have and don't have customers in their cities (Use UNION operation)
--- 4.Create a veiw that finds the salesman who has the customer with the highest order of a day. 
+select name,'exists' as same_city
+from salesman s
+where city in (select city from customer where s.salesman_id=salesman_id)
+union
+select name,'none exists' as same_city
+from salesman s where
+city not in (select city from customer where s.salesman_id = salesman_id);
+
+-- 4.Create a view that finds the salesman who has the customer with the highest order of a day. 
+create view highest_order as select s.salesman_id, o.purchase_amt, o.ord_date from salesman s, orders o where s.salesman_id;
+
 -- 5.Demonstrate the delete operation bu removing salesman with id 1000. All his orders must also be deleted 
