@@ -122,7 +122,8 @@ m.mov_year<2004 intersect select act_name from actor a
 join movie_cast mc on a.act_id = mc.act_id join movies m on mc.mov_id = m.mov_id where m.mov_year>2010;
 
 -- Q. Find the title of movies and number of stars for each movie that has at least one reating and find the highest number of stars that movie received. Sort the result by movie title.
-select mov_title, max(rev_stars) from movies m, rating r where m.mov_id = r.mov_id group by (m.mov_title , m.mov_id) order by m.mov_title;
+SELECT mov_title, sum(rev_stars) total_stars, max(rev_stars) max_stars
+FROM rating r, movies m WHERE m.mov_id = r.mov_id GROUP BY m.mov_title, m.mov_id ORDER BY m.mov_title;
 
 -- Q. Update rating of all movies directed by 'Steven Spilberg' to 5
 update rating set rev_stars=5 where mov_id in (select m.mov_id from movies m,director d where m.dir_id=d.dir_id and d.dir_name='Hitchcock');
