@@ -132,4 +132,4 @@ update rating set rev_stars=5 where mov_id in (select m.mov_id from movies m,dir
 select mov_year, mov_lang, count(mov_id) released from movies group by mov_year, mov_lang;
 
 -- Q. Find the total number of movies directed by each director
-select d.dir_id, d.dir_name, count(m.mov_id) from movies m, director d where d.dir_id=m.dir_id  group by d.dir_id, d.dir_name;
+select d.dir_id, d.dir_name, count(m.mov_id) no_directed from movies m, director d where d.dir_id=m.dir_id  group by d.dir_id, d.dir_name;
