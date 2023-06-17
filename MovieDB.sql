@@ -129,7 +129,7 @@ FROM rating r, movies m WHERE m.mov_id = r.mov_id GROUP BY m.mov_title, m.mov_id
 update rating set rev_stars=5 where mov_id in (select m.mov_id from movies m,director d where m.dir_id=d.dir_id and d.dir_name='Hitchcock');
 
 -- Q. Find the number of movies released in each year in each language
-select mov_year, mov_lang, count(mov_id) from movies group by mov_year, mov_lang;
+select mov_year, mov_lang, count(mov_id) released from movies group by mov_year, mov_lang;
 
 -- Q. Find the total number of movies directed by each director
 select d.dir_id, d.dir_name, count(m.mov_id) from movies m, director d where d.dir_id=m.dir_id  group by d.dir_id, d.dir_name;
