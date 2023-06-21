@@ -104,9 +104,9 @@ VALUES
     ('SUB008', 'Computer Science', '4', 4),
     ('SUB009', 'Economics', '5', 3),
     ('SUB010', 'Psychology', '5', 3),
-    ('SUB011', 'Subject1', '8', 3),
-    ('SUB012', 'Subject2', '8', 4),
-    ('SUB013', 'Subject3', '8', 3);
+    ('SUB011', 'Artificial Intelligence', '8', 3),
+    ('SUB012', 'Machine Learning', '8', 4),
+    ('SUB013', 'Database Systems', '8', 3);
 
 -- Insert values for the 'iamarks' table
 INSERT INTO iamarks (usn, subcode, ssid, test1, test2, test3, finalia)
@@ -130,9 +130,10 @@ select * from subject;
 select * from iamarks;
 
 
-
-
--- Q.List all the student details studying in fourth semester 'C' Section
+-- Q.List all the student details studying in fourth semester 'A' Section
+select s.usn, sname, gender, address
+from student s, semsec sc, class c
+where s.usn=c.usn and c.ssid=sc.ssid and sc.sem=4 and sc.sec='A';
 -- Q.Compute the totla number of male and femal students in each semester and in each section
 -- Q.Create a view of Test1 marks of student USN '1BI15CS101' in all subjects.
 -- Q.Calculate the FinalIA(best of two test marks and update the corresponding table of students
@@ -141,3 +142,6 @@ select * from iamarks;
 --		If FinalIA = 12 to 16 then CAT = 'Average'
 --		If FinalIA < 12 then CAT = 'Weak'
 -- Give these details only for 8th semester A, B and C section students
+
+-- Insert values for the 'class' table
+
