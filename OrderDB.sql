@@ -79,6 +79,6 @@ delete from salesman where salesman_id = 3
 
 
 -- 6.Retrieve salesman details along with count of orders, totoal purchase amount of the orders assigned to him and comission earned by him
-select s.salesman_id, s.name, s.city, count(*) as counts, sum(o.purchase_amt) as totalamt
+select s.salesman_id, s.name, s.city, count(*) as counts, sum(o.purchase_amt) as totalamt, sum((purchase_amt)*commission/100) as comission_earned
 from salesman s, orders o where s.salesman_id=o.salesman_id
 group by s.salesman_id, s.name, s.city, s.commission;
