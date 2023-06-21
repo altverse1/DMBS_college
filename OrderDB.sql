@@ -54,11 +54,17 @@ select s.name, s.salesman_id from salesman s, orders o where s.salesman_id=o.sal
 -- 3.List all the salesman and indicate those who have and don't have customers in their cities (Use UNION operation)
 select name,'exists' as same_city
 from salesman s
-where city in (select city from customer c, orders o where s.salesman_idsalesman_id)
+where city in 
+	(select city
+	from customer c, orders o
+	where s.salesman_id=o.salesman_id and o.customer_id=c.customer_id)
 union
-select name,'none exists' as same_city
+select name,'non exists' as same_city
 from salesman s where
-city not in (select city from customer where s.salesman_id = salesman_id);-- fix this check kaustubh's github
+city not in 
+	(select city
+	from customer c, orders o
+	where s.salesman_id=o.salesman_id and o.customer_id=c.customer_id);
 
 -- 4.Create a view that finds the salesman who has the customer with the highest order of a day. 
 create view highest_order as 
@@ -69,3 +75,10 @@ from highest_order h where purchase_amt=
 (select max(purchase_amt) from highest_order where h.ord_date = ord_date);
 
 -- 5.Demonstrate the delete operation bu removing salesman with id 1000. All his orders must also be deleted 
+delete from salesman where salesman_id = 3
+
+
+-- 6.Retrieve salesman details along with count of orders, totoal purchase amount of the orders assigned to him and comission earned by him
+select s.salesman_id, s.name, s.city, count(*) as counts, sum(o.purchase_amt) as totalamt
+from salesman s, orders o where s.salesman_id=o.salesman_id
+group by s.salesman_id, s.name, s.city, s.commission;
