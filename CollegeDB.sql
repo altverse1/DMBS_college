@@ -102,14 +102,20 @@ DROP Table iamarks;
 select s.usn, sname, gender, address
 from student s, semsec sc, class c
 where s.usn=c.usn and c.ssid=sc.ssid and sc.sem=4 and sc.sec='A';
--- Q.Compute the totla number of male and femal students in each semester and in each section
+
+-- Q.Compute the total number of male and female students in each semester and in each section
+select from student s, semsec sc, class c join 
+
 -- Q.Create a view of Test1 marks of student USN '1BI15CS101' in all subjects.
+
 -- Q.Calculate the FinalIA(best of two test marks and update the corresponding table of students
+UPDATE iamarks SET finalia = (test1+test2+test3)/3 where finalia is NULL;
+
 -- Q.Categorize students based on the following criterion:
 --		If FinalIA = 17 to 20 then CAT = 'Outstanding'
 --		If FinalIA = 12 to 16 then CAT = 'Average'
 --		If FinalIA < 12 then CAT = 'Weak'
 -- Give these details only for 8th semester A, B and C section students
-
+select s.sname from student s order by (case when finalia>17 and finalia=17 and finalia<20where  
 -- Insert values for the 'class' table
 
