@@ -102,7 +102,7 @@ INSERT INTO works_on VALUES
 ('111','4',9);
 
 
--- 1. Make a list of all project numbers for projects that involve an employee whose last name is ‘Scott’, either as a worker or as a manager of the department that controls the project.
+-- 1. Make a list of all project numbers for projects that involve an employee whose last name is â€˜Scottâ€™, either as a worker or as a manager of the department that controls the project.
 SELECT distinct pno
 from project
 WHERE pno IN
@@ -113,9 +113,10 @@ OR
 pno IN
 (SELECT pno
 FROM works_on w,employee e
-WHERE w.ssn = e.ssn AND name LIKE '%Scott');
+WHERE w.ssn = e.ssn AND name LIKE '%Scott');
 
--- 2. Show the resulting salaries if every employee working on the ‘IoT’ project is given a 10 percent raise. 
+
+-- 2. Show the resulting salaries if every employee working on the â€˜IoTâ€™ project is given a 10 percent raise. 
 SELECT ssn, (salary+(salary*0.10)) AS resulting_sal 
 FROM employee
 WHERE ssn IN
@@ -126,7 +127,7 @@ WHERE pno IN
 FROM project
 WHERE pname = 'IoT'));
 
--- 3. Find the sum of the salaries of all employees of the ‘IT’ department, as well as the maximum salary, the minimum salary, and the average salary in this department 
+-- 3. Find the sum of the salaries of all employees of the â€˜ITâ€™ department, as well as the maximum salary, the minimum salary, and the average salary in this department 
 SELECT SUM(salary) Sum_sal, MAX(salary) Max_sal, MIN(salary) Min_sal, AVG(salary) Avg_sal
 FROM employee
 WHERE dno IN
@@ -137,7 +138,7 @@ WHERE dname = 'IT');
 -- 4. Retrieve the name of each employee who works on all the projects controlledby department number 1 (use NOT EXISTS operator). 
 SELECT e.name 
 FROM employee  e
-WHERE NOT EXISTS((SELECT pno FROM project WHERE dno = '1') MINUS (SELECT pno FROM works_on WHERE ssn = e.ssn));
+WHERE NOT EXISTS((SELECT pno FROM project WHERE dno = '1') EXCEPT (SELECT pno FROM works_on WHERE ssn = e.ssn));
 
 -- 5. For each department that has more than 2 employees, retrieve the department number and the number of its employees who are making more THAN RS. 6,00,000.
 SELECT d.dno, COUNT(*) as no_of_emp 
